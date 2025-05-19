@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - NextGen TV Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="payment-page">
+    <div class="payment-container">
+        <h2>Choose Your Payment Method</h2>
+
+        <div class="payment-options">
+            <div class="payment-method">
+                <img src="image/ovo.png" alt="OVO">
+                <button class="btn payment-btn" data-method="OVO">Pay with OVO</button>
+            </div>
+            <div class="payment-method">
+                <img src="image/gopay.png" alt="GoPay">
+                <button class="btn payment-btn" data-method="GoPay">Pay with GoPay</button>
+            </div>
+            <div class="payment-method">
+                <img src="image/dana.png" alt="Dana">
+                <button class="btn payment-btn" data-method="Dana">Pay with Dana</button>
+            </div>
+            <div class="payment-method">
+                <img src="image/logo-paypal.png" alt="PayPal">
+                <button class="btn payment-btn" data-method="PayPal">Pay with PayPal</button>
+            </div>
+        </div>
+
+        <div class="confirmation">
+            <button class="btn confirm-btn" id="proceedToNotaBtn">Confirm Payment</button>
+        </div>
+    </div>
+</div>
+
+<!-------- footer------>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Unduh Aplikasi Kami</h3>
+                    <p>Unduh Aplikasi Untuk Ponsel Android dan iOS</p>
+                    <div class="app-logo">
+                        <img src="image/play-store.png">
+                        <img src="image/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="image/logo - Copy.png">
+                    <p>Tujuan Kami Adalah Untuk Secara Berkelanjutan Membawa Hiburan Berkualitas ke Setiap Rumah dengan TV Terbaik untuk Semua Orang.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Tautan berguna</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twiter</li>
+                        <li>Instagram</li>
+                        <li>YouTube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2025 - NextGenTV</p>
+        </div>
+    </div>
+
+<script>
+    document.querySelectorAll('.payment-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const method = this.getAttribute('data-method');
+            alert('You selected ' + method + ' as your payment method.');
+        });
+    });
+    document.getElementById('proceedToNotaBtn').addEventListener('click', function() {
+        window.location.href = 'purchase-receipt.html';
+    });
+</script>
+
+</body>
+</html>

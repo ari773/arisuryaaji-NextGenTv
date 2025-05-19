@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device width, initial-scale=1.0">
+        <title>All Produts NextGen Tv Shop</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    </head>
+    <body>
+ 
+      <!-- Cart Section Start -->
+<div class="small-container cart-page">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="image/categori3.avif" alt="Product 3">
+                        <div>
+                            <p>55" OLED S90D 4K Smart AI TV</p>
+                            <small>Price: Rp 21.380.000</small>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1" min="1" class="quantity-input" data-price=" 21380000"></td>
+                <td class="subtotal"> 21.380.000</td>
+                <td><button class="remove-btn">Remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="total-price">
+        <table>
+            <tr>
+                <td>Subtotal</td>
+                <td class="subtotal-amount"></td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td class="total-amount"></td>
+            </tr>
+        </table>
+        <button class="btn checkout-btn" id="proceedToCheckoutBtn">Proceed to Checkout</button>
+    </div>
+</div>
+<!-- Cart Section End -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const quantityInputs = document.querySelectorAll(".quantity-input");
+        const subtotalAmount = document.querySelector(".subtotal-amount");
+        const totalAmount = document.querySelector(".total-amount");
+        const DISCOUNT_THRESHOLD = 100000000;
+        const DISCOUNT_AMOUNT = 100000;
+
+        function updateCart() {
+            let subtotal = 0;
+
+            document.querySelectorAll("tbody tr").forEach(row => {
+                const quantityInput = row.querySelector(".quantity-input");
+                const subtotalCell = row.querySelector(".subtotal");
+
+                if (quantityInput && subtotalCell) {
+                    const quantity = parseInt(quantityInput.value) || 0;
+                    const price = parseInt(quantityInput.dataset.price) || 0;
+                    const productSubtotal = quantity * price;
+                    subtotalCell.textContent = `Rp${productSubtotal.toLocaleString()}`;
+                    subtotal += productSubtotal;
+                }
+            });
+
+            let discount = 0;
+            if (subtotal >= DISCOUNT_THRESHOLD) {
+                discount = DISCOUNT_AMOUNT;
+            }
+
+            const total = subtotal - discount;
+
+            subtotalAmount.textContent = `Rp${subtotal.toLocaleString()}`;
+            totalAmount.textContent = `Rp${total.toLocaleString()}`;
+        }
+
+        quantityInputs.forEach(input => {
+            input.addEventListener("input", updateCart);
+        });
+
+        document.querySelectorAll(".remove-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                this.closest("tr").remove();
+                updateCart();
+            });
+        });
+
+        updateCart();
+    });
+    document.getElementById('proceedToCheckoutBtn').addEventListener('click', function() {
+        window.location.href = 'checkout.html';
+    });
+</script>
+
+
+
+
+
+<!------js for toggle menu------->
+    <script>
+        var MenuItems=document.getElementById("MenuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(MenuItems.style.maxHeight == "0px")
+        {
+            MenuItems.style.maxHeight = "200px";
+        }
+        else{
+            MenuItems.style.maxHeight= "0px";
+        }
+        }
+    </script>
+
+    </body>
+</html>
